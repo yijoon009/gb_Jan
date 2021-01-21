@@ -1,0 +1,28 @@
+package myday02;
+
+public class SuperCar  extends Car{
+	String mode;
+	
+	public SuperCar() {
+		super();
+	}
+	
+	@Override
+	void engineStart() {
+		System.out.println("음성으로 시동 킴");
+		super.engineStart();         //부모꺼에 += 한거	
+	}
+	
+	@Override
+	void engineStop() {
+		System.out.println("음성으로 시동 끔");
+	}
+	
+	void openRoof() {
+		System.out.println("뚜껑 열림");
+	}
+	
+	void closeRoof() {
+		System.out.println("뚜껑 닫힘");
+	}
+}

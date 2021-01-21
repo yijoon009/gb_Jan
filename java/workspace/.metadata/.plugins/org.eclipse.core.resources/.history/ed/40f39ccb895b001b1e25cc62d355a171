@@ -1,0 +1,9 @@
+package bank;
+
+public class Woori extends Bank{
+	//잔액 조회시 재산 반토막
+	@Override
+	public void balance() {
+		this.money = money*0.5;
+	}
+}

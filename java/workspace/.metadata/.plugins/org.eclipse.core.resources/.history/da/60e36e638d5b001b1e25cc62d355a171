@@ -1,0 +1,9 @@
+package bank;
+
+public class Kookmin extends Bank{
+	//입금 시 수수료 50%
+	@Override
+	public void deposit(int money) {
+		this.money +=money*0.5;
+	}
+}

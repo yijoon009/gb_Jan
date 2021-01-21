@@ -1,0 +1,13 @@
+package bank;
+
+public class Shinhan extends Bank{
+	//출금 시 수수료 50%
+	@Override
+	public void withdraw(int money) {
+		if(this.money<money) {
+			System.out.println("잔액 부족");
+			return;
+		}
+		this.money -= money*1.5;
+	}
+}
