@@ -11,4 +11,16 @@
 <fullyQualifiedTypeName name="bank.Woori"/>
 <fullyQualifiedTypeName name="bank.Shinhan"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="bank_teacher.Shinhan"/>
+<fullyQualifiedTypeName name="bank_teacher.Kookmin"/>
+<fullyQualifiedTypeName name="bank_teacher.Woori"/>
+<fullyQualifiedTypeName name="bank_teacher.Bank"/>
+<fullyQualifiedTypeName name="access.Access3"/>
+<fullyQualifiedTypeName name="myday03.Access1"/>
+<fullyQualifiedTypeName name="inter.InterB"/>
+<fullyQualifiedTypeName name="inter.ImplTest"/>
+<fullyQualifiedTypeName name="inter.SuperImplTest2"/>
+<fullyQualifiedTypeName name="inter.InterA"/>
+<fullyQualifiedTypeName name="inter.ImplTest2"/>
+<fullyQualifiedTypeName name="myday03.Shape"/>
 </qualifiedTypeNameHistroy>
