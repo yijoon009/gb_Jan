@@ -6,6 +6,7 @@ public class Bank {
 	
 	
 	//객체
+	
 	//돈
 	int money;
 	//예금주
@@ -32,6 +33,7 @@ public class Bank {
 	}
 	
 	//출금
+	//성공 실패만 판별
 	public boolean withdraw(int money) {
 		if(this.money - money < 0) {
 			return false;
@@ -46,9 +48,11 @@ public class Bank {
 	}
 	
 	//암호화
+	//아스키코드 이용
 	public static String encrypt(String pw) {
 		String en_pw = "";
 		for(int i=0;i<pw.length();i++) {
+			//문자 * 정수 = 정수
 			en_pw += (char)(pw.charAt(i) * KEY);
 		}
 		return en_pw;

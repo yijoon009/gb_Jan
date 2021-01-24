@@ -12,28 +12,31 @@ public class ATM {
 		Kookmin[] arK = new Kookmin[100];
 		Woori[] arW = new Woori[100];
 
+		//각 은행을 담은 이차원 배열
 		Bank[][] arrBank = { arS, arK, arW };
-
-//		int[] arUserCnt = {Shinhan.cnt, Shinhan.cnt, Woori.cnt};
+		
+		//각 은행의 고객 수를 담은 배열
 		int[] arMemberCnt = { 0, 0, 0 };
 
 		String main_menu = "은행을 고르세요.\n1. 신한 2. 국민 3. 우리 4. 나가기";
 		String user_menu = "1. 계좌개설, 2. 입금하기, 3. 출금하기, 4. 잔액조회, 5. 계좌번호 찾기, 6. 돌아가기";
 		String errMsg = "다시 시도해주세요.";
 
-		int choice;
+		int bank_choice;
 		int optionChoice = 0;
 
+		
 		String name = null, account = null, pw = null, phone = null;
+		
 		//사용자가 원하는 금액을 담을 변수
+		//입출금 둘다 쓰이니까 꺼내놨어
 		int money = 0;
 		
-		//계좌번호 FLAG
+		//계좌번호 중복체크 FLAG
 		boolean isDupAcc = false;
 
 		//고객을 담아줄 임시 저장소
 		Bank temp = null;
-		
 		
 		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
@@ -57,17 +60,15 @@ public class ATM {
 		while (true) {
 
 			System.out.println(main_menu);
-			choice = sc.nextInt();
-			if (choice == 4) {
+			bank_choice = sc.nextInt();
+			if (bank_choice == arMemberCnt.length + 1) {
 				break;
 				//은행이 늘어나면 은행 개수도 늘어나고, 은행 메뉴도 늘어난다.
 				//개발자가 직접 코드를 수정하지 않고,
 				//arMemberCnt.length를 통해 컴파일러가 연산하도록 개발한다.
-			}else if(choice < 1 || choice > arMemberCnt.length) {
+			}else if(bank_choice < 1 || bank_choice > arMemberCnt.length) {
 				continue;
 			}
-			
-			
 			
 			while (true) {
 				System.out.println(user_menu);
@@ -81,7 +82,7 @@ public class ATM {
 				case 1:
 					// 현재 개설된 통장 개수와 은행에서 발급할 수 있는 통장의 개수가 일치하면
 					// 더 이상 계좌개설을 할수가 없다.
-					if (arMemberCnt[choice - 1] == arrBank[choice - 1].length) {
+					if (arMemberCnt[bank_choice - 1] == arrBank[bank_choice - 1].length) {
 						System.out.println("정원 초과입니다.");
 						break;
 					}
@@ -97,6 +98,7 @@ public class ATM {
 					while (true) {
 
 						// 계좌번호 중복체크 플래그
+						//초기화 해줘야해
 						isDupAcc = false;
 
 						// 100000 ~ 99999
@@ -149,7 +151,9 @@ public class ATM {
 
 					while (true) {
 
-						boolean isRightPhone = false;
+						//중복 플래그 초기화
+						//여기서만 쓰이니까 굳이 밖에서 선언 안한거
+						boolean isWrongPhone = false;
 						boolean isDupphone = false;
 						
 						System.out.print("휴대폰 번호 입력 (-제외)");
@@ -161,12 +165,13 @@ public class ATM {
 							// 아스키 코드로 정수라면 48~57이다.
 							if (c < 48 || c > 57) {
 								// 정수가 아닌 문자가 포함되어 있을 때
-								isRightPhone = true;
+								isWrongPhone = true;
 								break;
 							}
 						}
 
-						if (isRightPhone) {
+						//정수 아닌 문자 들어가있으면 중복검사 할 필요 없으니 continue;
+						if (isWrongPhone) {
 							continue;
 						}
 
@@ -184,7 +189,7 @@ public class ATM {
 						
 //						if(!isDupphone) {break;}
 						//이렇게 사용해도 되지만 안전하게 아래의 코드로 작성을 한다.
-						if(!isDupphone && !isRightPhone) {break;}
+						if(!isDupphone && !isWrongPhone) {break;}
 					}
 
 //					while(true) {
@@ -204,11 +209,12 @@ public class ATM {
 					//사용자가 선택한 은행에 맞는 필드를 메모리에 할당하기 위해서 3개의 필드를 준비한다.
 					Bank[] arNewMember = {new Shinhan(), new Kookmin(), new Woori()};
 					
-					arrBank[choice-1][arMemberCnt[choice-1]] = arNewMember[choice-1];
-					temp = arrBank[choice - 1][arMemberCnt[choice - 1]];
+					arrBank[bank_choice-1][arMemberCnt[bank_choice-1]] = arNewMember[bank_choice-1];
+					temp = arrBank[bank_choice - 1][arMemberCnt[bank_choice - 1]];
 					
 					temp.name = name;
 					temp.account = account;
+					//암호화 해서 저장
 					temp.pw = Bank.encrypt(pw);
 					temp.phone = phone;
 					
@@ -219,18 +225,18 @@ public class ATM {
 					System.out.println("이제부터 정상이용 가능합니다!!!");
 
 	               //내 이전 고객의 정보도 출력해보기
-	               if(arMemberCnt[choice - 1] != 0) {
-	                  temp = arrBank[choice - 1][arMemberCnt[choice - 1] - 1];
-	                  System.out.println("==========이전 고객=========");
-	                  System.out.println("예금주 : " + temp.name);
-	                  System.out.println("계좌번호 : " + temp.account);
-	                  System.out.println("암호화 : " + temp.pw);
-	                  System.out.println("복호화 : " + Bank.decrypt(temp.pw));
-	                  System.out.println("폰번호 : " + temp.phone);
-	               }
+//	               if(arMemberCnt[bank_choice - 1] != 0) {
+//	                  temp = arrBank[bank_choice - 1][arMemberCnt[bank_choice - 1] - 1];
+//	                  System.out.println("==========이전 고객=========");
+//	                  System.out.println("예금주 : " + temp.name);
+//	                  System.out.println("계좌번호 : " + temp.account);
+//	                  System.out.println("암호화 : " + temp.pw);
+//	                  System.out.println("복호화 : " + Bank.decrypt(temp.pw));
+//	                  System.out.println("폰번호 : " + temp.phone);
+//	               }
 					
 					//계좌개설 정상 종료 후 해당 은행 고객 수 1 증가
-					arMemberCnt[choice - 1]++;
+					arMemberCnt[bank_choice - 1]++;
 					break;
 					
 				// 입금하기
@@ -285,6 +291,7 @@ public class ATM {
 						}
 						temp.deposit(money);
 						System.out.println("입금 성공!");
+						//굳이 잔여금액 출력 안한건 우리에게 '잔액 표시' 기능이 있기 때문
 					}else {
 						System.out.println("잘못된 비밀번호입니다.");
 					}
@@ -408,6 +415,7 @@ public class ATM {
 					
 					//암호화 된 pw끼리 비교
 					if(temp.pw.equals(pw)) {
+						
 						while(true) {
 							isDupAcc = false;
 							account = r.nextInt(900000)+100000+"";
