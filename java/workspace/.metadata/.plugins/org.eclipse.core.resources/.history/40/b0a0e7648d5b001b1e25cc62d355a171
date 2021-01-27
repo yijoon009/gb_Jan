@@ -1,9 +1,0 @@
-package bank;
-
-public class Shinhan extends Bank{
-	//출금 시 수수료 50%
-	@Override
-	public void withdraw(int money) {
-		this.money -= money*1.5;
-	}
-}
