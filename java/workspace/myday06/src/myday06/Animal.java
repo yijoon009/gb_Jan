@@ -3,9 +3,7 @@ package myday06;
 public class Animal implements Runnable{
 
 	private String cry;
-	public Animal() {
-		// TODO Auto-generated constructor stub
-	}
+	public Animal() {}
 	public Animal(String cry) {
 		super();
 		this.cry = cry;
