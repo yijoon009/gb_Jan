@@ -1,0 +1,265 @@
+www.dbguide.net
+응시료 5만원
+
+SQLD
+SQLP
+
+===================================
+
+DBMS(Data Base Management System)
+
+DB : 데이터 기지(저장소)
+DBMS : Oracle, MySql, MS-SQL, 몽고db
+IDE :  SQPDeveloper, DBeaver, 토드,,,
+
+오라클 서비스, 오라클 리스너
+	사용자가 데이터를 요청하면, 요청한 데이터를 제공해주는 것이 DBMS이다.
+	따라서 사용자가 필요할 때마다 서비스를 제공하기 위해서는
+	24시간 운영되어야만 한다. 이렇게 서비스를 제공하는 것을 서버라고 부른다.
+
+	오라클을 설치하면 사용자의 요청을 듣는 리스너와 그 요청을 처리하는
+	서비스가 등록된다.
+	컴퓨터관리 > 서비스 및 응용프로그램 > 서비스 > OracleServiceXE, oracleXETNSLister
+
+	항상 Service를 먼저 실행하고 그 다음 Listener를 실행한다.
+	끌 때에는 반대로 Listener를 종료한 후 Service를 종료한다.
+
+
+----------------------------------
+	사용자
+----------------------------------
+
+고객 관리		주문 관리
+응용 프로그램	응용프로그램
+
+----------------------------------
+
+	데이터베이스 관리 시스템(DBMS)
+	(고객아이디, 고객명, 연락처, 주소)  공유하는 데이터
+	주문번호, 제품명, 주문시간, 가격
+----------------------------------
+
+RDBMS(관계형 데이터베이스 관리 시스템)
+
+Table A(USER)			Table B(ORDER)
+번호	이름	나이 		구매번호		번호	날짜		상품
+1	한동석	20		20210129001	3	20210129	바지
+2	고희광	21		20210129002	3	20210129	손목시계
+3	방준호	22		20210129003	1	20210129	4K모니터
+4	홍아현	23		20210129004	2	20210129	냉장고
+
+
+이러한 구조를 가지는 것을 Table, Relation(오라클), Class라고 부른다.
+
+COLUMN(열, 속성, 필드)
+	공통된 값들의 주제
+
+ROW(행, 레코드, 튜플)
+	하나의 정보
+
+Primary Key
+	고유한 값(각 행의 구분점으로 사용된다.)
+	중복이 없고 NULL값이 없다.
+
+Foreign Key
+	테이블끼리 관계를 맺었을 때, 다른 테이블의 PK
+	중복이 가능하고 NULL이 가능하다.
+
+----------------------------------------
+
+오라클 설치
+	kedudisk.com > DBMS 리소스 폴더 > Oracle11gXE.zip
+	압축 풀고 DISK1폴더 안에 있는 setup.exe 실행
+	포트번호, TNS번호 확인 후 NEXT, Install
+
+i: internet 초기버전
+g: grid 
+c: cloud
+
+홀수 짝수 : 짝수는 베타버전(테스터) 홀수는 본 서버
+
+통합개발 환경 설치(DBeaver)
+
+1. 이클립스 플러그인 설치
+   Help > Eclipse MarketPlace > Dbeaver 검색 
+   > 스크롤 하단에 있는 DBeaver 7.x.x Install 클릭
+   > Next > Confirm
+   창이 뜨면 Install Anyway > Restart Now
+
+   Perspectiver를 DBeaver로 변경
+
+2. 응용 프로그램 설치
+	kedudisk.com > DBMS 리소스 폴더 > DBeaverxxxxxxxx.exe 다운로드
+	> 설치 후 > 윈도우버튼 > DBeaver 검색 > 실행
+
+	위의 순서에 문제 발생 시 아래경로로 설치한다.
+	https://dbeaver.io/files/5.3.5/
+	
+	dbeaver-ce-5.3.5-win32.win32.x86_64.zip 다운로드
+	※ 64비트 jdk설치 후 32비트 자바프로그램 실행 시 오류가 발생할 수 있다.
+
+	만약 JDK 혹은 JRE 오류 코드 13이 나타나면 JRE경로를 인식하지 못하는 것이다.
+	따라서 JAVA_HOME을 추가했듯이 JRE_HOME을 환경변수에 만들어서
+	PATH에 추가해준다.
+	JRE_HOME은 jre폴더 경로로 설정하면 된다.
+
+----------------------------------------
+컴파일 언어
+	한 페이지 단위로 해석한다. (통채로)
+	따라서 일괄처리이기 때문에 효율적이지만,
+	잦은 수정이 있을 때에는 비효율적이다.
+
+스크립트 언어
+	한 줄 씩 해석한다.
+	따라서 전체를 놓고 봤을 때에는 비효율적이지만,
+	잦은 수정과 업데이트가 있을 때에는 굉장히 효율적이다.
+
+
+SQL문(인터프리터 언어, 스크립트 언어) HTML, Javascript, ...
+
+	DDL(Data Definition Language)
+		CREATE, DROP, ALTER, TRUNCATE
+
+	DML(Data Manipulation Language)
+		SELECT, INSERT, UPDATE, DELETE
+
+	DCL(Data Control Language)
+		GRANT, REVOKE
+
+	TCL(Transaction Control Language)
+		COMMIT, ROLLBACK
+
+트랜잭션
+	작업의 단위
+	예를 들어, "결제 시 포인트 적립"이라는 작업을 구현하기 위해서는
+	[상품 테이블 select, 회원 테이블 select, 회원 테이블 insert]
+	이렇게 3가지 쿼리문을 작성해야 한다. 이때 3가지의 쿼리문은 하나의
+	작업을 구현하기 위한 작업이고 이를 트랜잭션이라고 부른다.
+
+-------------------------------------
+
+.sql파일을 원하는 계정에 추가하기
+
+cmd 실행
+SQL> conn hr/hr
+SQL> @[.sql파일 경로 및 파일 이름] - 드래그 앤 드롭으로 진행
+예)SQL> @C:/a1.sql
+엔터
+
+Mac에서 추가할 때에는 아래의 사이트 참고
+출처: https://goaloflife.tistory.com/163
+-------------------------------------------------------------
+만약 .sql파일이 정상적으로 추가되지 않을 때에는
+rem...... 명령어를 제외한 모든 SQL문을
+script파일로 복사하여 alt + x를 통해 일괄 실행하여 추가한다.
+-------------------------------------------------------------
+DBeaver Oracle 설정
+
+New Connection > Oracle 선택
+host : localhost
+Database : XE
+
+UserName : hr
+Password : hr
+
+Edit Driver Settings 클릭 > Add File 
+> C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6 추가
+
+Test Connection 클릭 > Connected 출력 시 정상 연결
+-------------------------------------------------------------------
+
+SQL문 자료형(TYPE)
+
+	숫자
+		NUMBER(자리수) : 소수점 자리수는 0으로 들어간다.
+		NUMBER(자리수, 소수점자리수) : 실수
+
+	문자열
+		CHAR(Byte) : 고정형
+			CHAR(4) : 'ABCD'
+			CHAR(4) : 'A^^^'			
+
+		VARCHAR(Byte) : 가변형
+		VARCHAR2(Byte)
+			VARCHAR2(5) : 'A'
+
+	날짜
+		DATE : FORMAT에 맞춰서 날짜를 저장하는 타입
+
+--------------------------------------
+
+OPTIMIZER(옵티마이저) : ctrl shift e
+
+	COST : 예상 수행 시간
+	            쿼리를 수행하는 데 소요되는 일량 또는 시간.
+
+	CARDINALITY : 실행 결과의 건수
+
+SQL을 가장 빠르고 효율적으로 수행할 최적의 처리 경로(최저 비용)를
+생성해주는 DBMS 내부의 핵심 엔진.
+사용자가 쿼리문으로 결과를 요구하면,
+이를 생성하는데 필요한 처리경로는 DBMS에 내장된 옵티마이저가
+자동으로 생성한다.
+이렇게 옵티마이저가 생성한 SQL처리경로를 실행 계획(Excution Plan).이라고 부른다.
+
+옵티마이저의 SQL 최적화 과정
+	사용자가 작성한 쿼리수행을 위해, 실행될 만한 실행계획을 찾는다.
+	데이터 딕셔너리(Data Dictionary)에 미리 수집해 놓은
+	오브젝트 통계 및 시스템 통계 정보를 이용해서 각 실행계획의
+	예상 비용을 산정한다.
+	각 실행계획을 비교해서 최저비용을 갖는 하나를 선택하여 실행한다.
+
+PARSER		OPTIMIZER	ROW_SOURCE	SQL_ENGINE
+				GENERATOR
+
+문법오류검사, 	총 비용계산	실행가능한 코드로	실행
+코드로 변경	실행 계획 생성	변경	
+
+---------------------------------
+
+옵티마이저의 종류
+
+	1. 규칙기반 옵티마이저(RBO, rull by optimizer), 휴리스틱(Heuristic) 옵티마이저
+		미리 정해진 규칙에 따라 실행
+		FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+		ORACLE 10g 버전부터 RBO 지원 중단.
+
+	2. 비용기반 옵티마이저(CBO, cost by optimizer)
+		비용이 가장 낮은 실행계획을 선택한다.
+
+---------------------------------
+
+JOIN
+	여러 테이블에 흩어져 있는 정보 중
+	사용자가 필요한 정보만 가져와서 가상의 테이블처럼 만들고
+	결과를 보여주는 것.
+
+	조회 테이블이 너무 많이 쪼개져 있으면, 느리기 때문에
+	입력, 수정, 삭제의 성능을 향상시키기 위해 사용한다.
+
+- 내부 조인(INNER JOIN) : INNER 생략 가능
+	테이블명 INNER JOIN 테이블명
+	ON 조건식
+
+	테이블명 JOIN 테이블명
+	ON 조건식
+
+	테이블명, 테이블명
+	WHERE  조건식
+
+-등가 조인 : ON절에 등호가 있을 때
+
+-비등가 조인: ON절에 등호가 없을 때
+
+
+
+ON과 WHERE
+	ON절의 조건은 JOIN이 되면서 실행되고,
+	WHERE 절의 조건은 JOIN이 모두 끝나고 실행된다.
+
+ON과 WHERE를 같이 사용할 때와 ON만 사용할때의 결과가 같다면,
+ON만 사용하는 것이 좋다.
+
+
+
+
