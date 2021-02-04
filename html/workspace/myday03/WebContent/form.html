@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form 태그와 입력태그 예제</title>
+</head>
+<body>
+	<h1>form 태그와 입력태그</h1>
+	<form action="login.jsp" method="get" name="joinForm">
+		<p>아이디
+			<input type = "text" size="20" maxlength="12" placeholder="아이디를 입력해주세요." name="userId" required> 
+		</p>
+		<p>비밀번호
+			<input type="password" size="20" maxlength="12" placeholder="패스워드를 입력해주세요." name="userPw" required>
+		</p>
+		<fieldset>
+			<legend>성별</legend>
+			<p>
+				<label>남자<input type="radio" name="gender" value="남"></label>
+				<label>여자<input type="radio" name="gender" value="여" checked></label>
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>취미</legend>
+			<p>
+				<label>드라이브<input type="checkbox" name="hobby" value="드라이브"></label>
+				<label>등산<input type="checkbox" name="hobby" value="등산"></label>
+				<label>영화감상<input type="checkbox" name="hobby" value="영화감상"></label>
+				<label>게임<input type="checkbox" name="hobby" value="게임"></label>
+			</p>
+		</fieldset>
+		
+		<p>파일 선택<input type="file"></p>
+		<p>색상<input type="color" value="#00ff00"></p>
+		<p>메일 주소<input type = "email"></p>
+		<p>웹 사이트<input type = "url"></p>
+		<p>연락처<input type = "tel"></p>
+		<p>조회 기간<input type = "date"></p>
+		<p>참여 인원<input type = "number" value="1" min='0' max='100' step='5'></p>
+		<p>단계(상, 중, 하)<input type = "range" value='1' min='1' max='3'></p>
+		<p>검색<input type = "search"></p>
+		
+		<p>학과 선택
+			<select name='major'>
+				<option value='archi'>건축공학과</option>
+				<option value='machanic'>기게공학과</option>
+				<option value='indust'>산업공학과</option>
+				<option value='elec'>전기전자공학과</option>
+				<option value='computer'>컴퓨터공학과</option>
+			</select>
+		</p>
+		
+		<p>관심 분야<input type="text" list='choices'>
+			<datalist id='choices'>
+				<option value='grammer'>문법</option>
+				<option value='voca'>어휘</option>
+				<option value='speaking'>회화</option>
+				<option value='listening'>리스닝</option>
+				<option value='news'>뉴스 청취</option>
+			</datalist>
+		</p>
+		
+		
+		<p><textarea rows="100" cols="5">안녕하세요</textarea></p>
+		
+		<p>진행률<progress value='30' max='100'></progress></p>
+		<p><input type="submit" value='가입완료'></p>	<!-- 누르자 마자 action으로 이동 -->
+		<p><input type="button" value='버튼(input태그)' onclick="getMsg()"></p>	<!-- 눌렀을 때 action으로 이동하지 않음, id중복검사(form태그 전체 데이터 전송하지 말기) -->
+		<p><button>버튼 태그</button></p>	<!-- 누르자 마자 action으로 이동 -->
+		<p><input type="reset" value='초기화'></p>
+		
+	</form>
+</body>
+
+<script>
+	function getMsg(){
+		alert("클릭 했어요!");
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

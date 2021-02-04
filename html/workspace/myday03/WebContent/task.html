@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	form{
+		margin: 0 auto;
+		width: 250px;
+	}
+	div img{
+		display: block; margin: 0px auto;
+	}
+</style>
+<meta charset="UTF-8">
+<title>네이버 폼</title>
+</head>
+<body>
+	<div>
+		<img alt="네이버 로고" height="200" width="200" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAaVBMVEX///8Axzzv+/P7/vzP9NoPykdf3IWf6rY/1WyP5qkIyUKv7cIVzEyj67k202bg+Od/451X2n/1/fct0V4dzlKE5KFN2Hdo3oyV6K564pnA8c/n+u3M9Nglz1i078aL5qbY9uFH13Jy4JPQ1vp1AAAD40lEQVR4nO2Z23bqIBBAg7Ea4yVttNpWrW3//yNPczHMAFHk5Zx11t5vJWNgE2YgaZYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDfJxfca/2nMZbya2idieaJiv8xkg+/rRqJrbKpCTNvYp+85l1xWOu+Y0XMZpj9UZF8pTp7aRsr2bSwwWfRvM8eFel+dkoRMa93RZa6n7K7uBdNxRD7JSM/00SMmdUJImZ6T+Tb6aab/08Tir+IxnOeKmI2cetL/2ib3xapjMO2bc7lIlpfgwvReMmSRZpV+bCI+bkt8uz1cvIm/6WPPYq2dgmmiphlgkhfh0ZE8p3Xyay9MClty1P/VOduVLJIkUXg/uhc3xD5dKN/h1175t1cqApwekTkXBTbUkUcE0TM4YbIy9gw1CC75ZmLsWy8mLeJJXdEmjvmc6nykSLSFMoREbHqbXZ3g8w29trOe3prT2TujuPJvba4FR0lspuMidiULsUwu5K9Nk7Lwf69yhNEZPTCjY4SacpOWMQ+hu/aPvl+JYktv91XRV14z7yhHZYDVVjkJKLX2X0CIr/lLijyYdsuYpPo5/vdXt0446h8EcEiLCLzMS1Hfod2DIqIxqncObr5knvlUe041w0tVuRSVdO13E3LmFNK8N77kIjYK1ZqxvsyL8rt75xu7V/X+YwV8XjxRn1bRKxqeca9irypO8uc6JaOWHl7+XzO166SRabeqG+LzELbhBURc9ysYhHcJ7OtBWUtrIeSkyoSU7O0yNE/gVgRN3vFUHdduovKv/y2UkOOJYrEeSiR0BFkEBH7QrtYZHJ/thETO5i9zafD0FWSSBH7ZqVEVNnVIrXoaT9tEEmy91wtdoFLkdl8YHpDZBWVHgGROrC4OpG5f0FwHJ1ycXKN3dklP4kisvRokcK/IOjfkQNB4l0iVkR9FojZ1EMizleSQeTLa1b0JXbpXdiJr0ljp9/aESnEIcGUsYvLFanlW6sV8f003abnv3g9i67G3kcKVyQXR2mzi3kZCYioMjuIOF+BfPrN13sVlqOIFsm+5MtIEfeJ0BPxBtOI+GvGoexGfHSa1eEiXkSXlriE90XyrVE0It/3RK7blnM4UMfWB0T0faIS3hfRD7YVUV+BnocslUWq+y7kVL2t6uoRkYnMtjJmUwyIqLfMVkStNnvX10CzepxvySJ6RmISPiSSq/1goovRyuaeqgv9r8UR7PqFJUlE18mIhA+JZJXcZyf6CCbyV9WyftTyKONk6WMiOlUP2T3+m/+PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8s/wBU2co/NOI5xEAAAAASUVORK5CYII=" >
+	</div>
+	<form action="login.jsp" method='post' name="joinForm">
+		<div>아이디</div>
+		<div>
+			<input type='text' size='30' name='userId' required> @naver.com
+		</div>
+		<div>비밀번호</div>
+		<div>
+			<input type="password" size='30' name="userPw" required>
+		</div>
+		<div>비밀번호 재확인</div>
+		<div>
+			<input type="password" size='30' required>
+		</div>
+		<div>이름</div>
+		<div>
+			<input type='text' size='30' required>
+		</div>
+		<div>생년월일</div>
+		<div>
+			<input type='text' placeholder="년(4자)"  required>
+			<select name='birthMonth' required>
+				<option >월</option>
+				<option value='Jan'>1월</option>
+				<option value='Feb'>2월</option>
+				<option value='Mar'>3월</option>
+				<option value='Apr'>4월</option>
+				<option value='May'>5월</option>
+				<option value='Jun'>6월</option>
+				<option value='Jul'>7월</option>
+				<option value='Aug'>8월</option>
+				<option value='Sep'>9월</option>
+				<option value='Oct'>10월</option>
+				<option value='Nov'>11월</option>
+				<option value='Dec'>12월</option>
+			</select>
+			<input type='text' placeholder="일"  required>
+		</div>
+		<div>성별</div>
+		<div>
+			<select name='gender' required>
+				<option >성별</option>
+				<option value='Male'>남자</option>
+				<option value='Female'>여자</option>
+				<option value='none'>선택 안함</option>
+			</select>
+		</div>
+		<div>본인 확인 이메일(선택)</div>
+		<div>
+			<input type='email' placeholder="선택입력" size='30'>
+		</div>
+		<div>휴대전화</div>
+		<div>
+			<select name='phoneNumber' required>
+				<option value='+82' selected>대한민국 +82</option>
+				<option value='+977'>네팔 +977</option>
+				<option value='+852'>홍콩 +852</option>
+			</select>
+		</div>
+		<div>
+			<input type='text' placeholder="전화번호 입력">
+			<input type="button" value='인증번호 받기' onclick="getMsg_tel()">
+		</div>
+		<div>	
+			<input type='text' readonly placeholder="인증번호를 입력하세요">
+		</div>
+		<div>
+			<input type='submit' value='가입하기'>
+		</div>
+	</form>
+</body>
+<script type="text/javascript">
+	function getMsg_tel() {
+		alert('인증번호를 보냈습니다.');
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
