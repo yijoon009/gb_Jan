@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>미디어 쿼리, 시맨틱 태그 - 실습</title>
+<style type="text/css">
+	
+	/* body는 default로 바깥여백이 있다. */
+	/* 만약 body 내의 요소가 100%의 width를 가지고 있다면 body의 margin을 0으로 해주어야 한다. */
+	body{background: #e0f2f1;}
+	#wrap{width:1200px; margin: 0 auto;}
+	header{width:100%;height: 150px; background: #fff9c4;}
+	aside{width:30%; float: left; height: 700px; background: #1e88e5;}
+	section{width:70%; float: left; height: 700px; background: #f44336;}
+	footer{clear:both; width:100%;height: 150px; background:#8bc34a;}
+	/* clear는 float 속성을 제거할 때 사용된다. */
+	
+	/* 미디어 쿼리 작성 */
+	/* 데스크탑: 1220px*/
+	@media (max-width:1220px){
+		#wrap{width:95%;}
+	}
+	/* 태블릿: 768px*/
+	@media (max-width:768px){
+		#wrap{width:100%;}
+		body{margin: 0;}
+	}
+	
+	/* 모바일: 480px*/
+	@media (max-width:480px){
+		#wrap{width:100%;}
+		footer, header{height: 300px;}
+		div aside, div section{float:none; width: 100%;height: 300px;}
+		
+	}
+	
+	
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<header></header>
+		<aside></aside>
+		<section></section>
+		<footer></footer>
+	</div>
+</body>
+</html>

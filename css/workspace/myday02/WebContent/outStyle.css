@@ -1,0 +1,5 @@
+@charset "EUC-KR";
+ul{
+		color: red;
+		list-style-type: square;
+	}
