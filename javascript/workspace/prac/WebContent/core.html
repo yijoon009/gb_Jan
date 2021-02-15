@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+<style type="text/css">
+	table{
+		width:30%;
+		margin: 0 auto;
+		text-align: center;
+		font-family: 'Song Myung', serif;
+
+	}
+	fieldset {
+		width:30%;
+		margin: 0 auto;
+		text-align: center;
+		font-family:  'Song Myung', serif;
+	}
+</style>
+</head>
+<body>
+	<table border="1">
+		<caption>요금표</caption>
+		<tr style="background-color: #84ffff">
+			<th>구분</th>
+			<th>요금</th>
+		</tr>
+		<tr class="data">
+			<td>아동</td>
+			<td>무료</td>
+		</tr>
+		<tr  class="data">
+			<td >청소년</td>
+			<td>2000원</td>
+		</tr>
+		<tr  class="data">
+			<td >성인</td>
+			<td>5000원</td>
+		</tr>
+		
+	</table>
+	<fieldset>
+		<legend>구분</legend>
+		<input type="text" id="choice">
+		<input type="button" value="확인" onclick="confirm()">
+	</fieldset>
+</body>
+<script type="text/javascript">
+
+	var tempTd;
+	var tempText;
+
+
+	function confirm(){
+		var choice = document.getElementById("choice").value;
+		var datas = document.getElementsByClassName("data");
+		var check = false;
+		
+		if(tempTd != undefined){
+			tempTd.parentElement.style.background="#fff";
+			tempTd.innerHTML=tempText;
+		}
+		
+		for(let i=0;i<datas.length;i++){
+			var td = datas[i].children[0];
+			if(choice == td.innerHTML){
+				
+				tempTd=td;
+				tempText=td.innerHTML;
+		
+				td.parentElement.style.background="#ef5333";
+				td.innerHTML="★"+td.innerHTML;
+				check=true;
+				break;
+			}
+		}
+		if(!check){
+			alert('다시 입력해주세요.');
+			history.go(0);
+		}
+	}
+	
+</script>
+</html>

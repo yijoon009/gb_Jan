@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Math를 이용한 구구단 연습</title>
+</head>
+<body>
+	<h3>Math를 이용한 구구단 연습</h3>
+	<hr>
+</body>
+<script type="text/javascript">
+	function getRandomInt(){
+		return {num1: Math.floor(Math.random()*9)+1, 
+				num2: Math.floor(Math.random()*9)+1};
+	}
+	
+	var nums = getRandomInt();
+	console.log(nums.num1);
+	console.log(nums.num2);
+	var q = nums.num1 +"*"+ nums['num2'];
+	var answer = eval(q);
+	var msg = "";
+	
+	var myAns = prompt(q + " 값은 얼마인가요?",0);
+	if(myAns==null){
+		msg="다시 시도해주세요";
+	}else{
+		msg= answer == myAns ? "정답입니다.":"오답입니다.";
+	}
+
+	document.write(msg);
+</script>
+</html>
+
+
+

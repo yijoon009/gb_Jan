@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array 객체로 배열 만들기</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var week = new Array("월","화","수","목","금","토","일");		
+	
+	week.length = 3;
+	console.log(week.length);
+	       
+	for(let i=0;i<week.length;i++){
+		document.write(week[i]);
+	}
+	
+	document.write("<br>"+week.join());
+	document.write("<br>"+week.join("-"));
+	
+</script>
+</html>

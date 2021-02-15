@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>요금제 실습</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+<style type="text/css">
+
+	
+	table{
+		margin : 0 auto;
+		text-align:center;
+		width: 30%;
+		font-family: 'Song Myung', serif;
+	}
+	fieldset{
+		text-align: center;
+		width: 30%;
+		margin:0 auto;
+		font-family: 'Song Myung', serif;
+	}
+</style>
+</head>
+<body>
+	<table border="1">
+		<caption><strong>요금표</strong></caption>
+		<tr style="background-color: #84ffff;" >
+			<th>구분</th>
+			<th>요금</th>
+		</tr>
+		<tr id="kid">
+			<td id="kid-text">아동</td>
+			<td>무료</td>
+		</tr>
+		<tr id="teen">
+			<td id="teen-text">청소년</td>
+			<td>2000원</td>
+		</tr>
+		<tr id="adult">
+			<td id="adult-text">성인</td>
+			<td>5000원</td>
+		</tr>
+	</table>
+	<br>
+	<fieldset style="width: 600px;">
+		<legend>구분</legend>
+		<input type="text" id="choice">
+		<input type="button" value="확인" onclick="confirm()">
+	</fieldset>
+
+</body>
+<script type="text/javascript">
+	//input태그에 사용자가 작성한 값을 가져올 때에는
+	//input 객체.value로 가져올 수 있다.
+	//*힌트: 배열
+	
+	var tempTr;
+	var tempTd;
+	var tempText;
+	
+	function confirm(){
+		var input = document.getElementById("choice").value;
+		
+		var arAge=['아동','청소년','성인'];
+		var arId = ['kid','teen','adult'];
+		
+		var check = false;
+		
+		for(let i=0;i<arAge.length;i++){
+			if(input == arAge[i]){
+				
+				if(tempTr != undefined){
+					//변경된 행이 있다면
+					tempTr.style.background="#fff";
+					tempTd.innerHTML=tempText;
+				}
+				
+				const tr = document.getElementById(arId[i]);
+				const td = document.getElementById(arId[i] +"-text");
+				
+				tempTr = tr;
+				tempTd = td;
+				tempText = arAge[i];
+				
+				tr.style.background="#1de9b6";
+				td.innerHTML="★"+arAge[i];
+				check = true;
+			}
+		}
+		if(!check){
+			alert('다시 입력해주세요.');
+			history.go(0);
+		}
+	}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
