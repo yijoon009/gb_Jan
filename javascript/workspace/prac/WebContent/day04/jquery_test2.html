@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul class="food">
+		<li>삼겹살</li>
+		<li>초콜릿</li>
+		<li>돈까스</li>
+	</ul>
+	
+	<div class="toggle">눌러보세요!</div>
+</body>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".toggle").click(function(){
+		if($(".food").css("display")=="none"){
+			$(".food").show();
+		}else{
+			$(".food").hide();
+		}
+	});
+</script>
+</html>

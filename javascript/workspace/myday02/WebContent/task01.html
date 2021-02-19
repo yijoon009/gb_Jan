@@ -62,9 +62,11 @@
 	function confirm(){
 		var input = document.getElementById("choice").value;
 		
+		//규칙성을 부여하기 위한 배열을 사용
 		var arAge=['아동','청소년','성인'];
 		var arId = ['kid','teen','adult'];
 		
+		//사용자가 입력한 값이 '구분'에 있는 지 검사할 FLAG
 		var check = false;
 		
 		for(let i=0;i<arAge.length;i++){

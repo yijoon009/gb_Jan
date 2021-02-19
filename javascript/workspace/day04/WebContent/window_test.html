@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window 객체 예제</title>
+</head>
+<body>
+</body>
+<script>
+	window.onload = function(){
+		window.setTimeout(function(){
+			//false : 보류(사용하지 말자..) default값
+			//true : 현재 히스토리 대체(뒤로가기 방지)
+			//var w = window.open("https://www.naver.com", "_self", false);
+			var w = window.open("https://www.naver.com", "_child", "width=600, height=300", true);
+		}, 3000);
+	}
+</script>
+</html>

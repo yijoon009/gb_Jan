@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>요금표</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap"
+	rel="stylesheet">
+
+<style>
+table {
+	margin: 0 auto;
+	text-align: center;
+	width: 30%;
+	font-family: Gugi;
+}
+
+thead {
+	background: #fff9c4;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<caption>요금표</caption>
+		<thead>
+			<tr>
+				<th>구분</th>
+				<th>요금</th>
+			</tr>
+		</thead>
+		<tr>
+			<td class="text">아동</td>
+			<td>무료</td>
+		</tr>
+		<tr>
+			<td class="text">청소년</td>
+			<td>2000</td>
+		</tr>
+		<tr>
+			<td class="text">성인</td>
+			<td>5000</td>
+		</tr>
+	</table>
+	<fieldset style="text-align: center; width: 30%; margin: 0 auto;">
+		<legend>구분</legend>
+		<input type="text" id="choice">
+		<button onclick="confirm()">확인</button>
+	</fieldset>
+</body>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	var tempTd;
+	var tempText;
+
+	function confirm() {
+		var input = $("#choice").val();
+		var check = false;
+
+		$.each($(".text"), function(index, item) {
+			
+			if ($(item).val() == input) {
+				if (tempTd != undefined) {
+					tempTd.css("backgound") = "#fff";
+					tempText = tdText;
+
+				}
+
+				const td = $(item).val();
+				const tdText = $(item).val();
+
+				tempTd = td;
+				tempText = tdText;
+
+				$(item).css("background") = "#ef5350";
+				tdText = "★" + $(item).val();
+
+				check = true;
+			}
+		});
+
+		/*       for(let i=0; i<arAge.length; i++){
+		 if(arAge[i] == input){
+		
+		 if(tempTr != undefined){
+		 tempTr.style.background = "#fff";
+		 tempTd.innerHTML = tempText;
+		 }
+		 const tr = document.getElementById(arId[i]);
+		 const td = document.getElementById(arId[i] + "-text");
+		
+		 tempTr = tr;
+		 tempTd = td;
+		 tempText = arAge[i];
+		
+		 tr.style.background = "#ef5350";
+		 td.innerHTML = '★' + arAge[i];
+		
+		 check = true;
+		 }
+		 } */
+
+		if (!check) {
+			alert("다시 시도해주세요");
+			history.go(0);
+		}
+
+	}
+</script>
+</html>
+
+
+

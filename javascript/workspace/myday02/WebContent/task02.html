@@ -43,16 +43,22 @@
 	<fieldset style="text-align:center; width:30%; margin:0 auto;">
 		<legend>구분</legend>
 		<input type="text" id="choice">
+		<!-- 이벤트 리스너 부분의 값에는 JS문법을 사용한다 -->
+		<!-- 즉, JS에 선언된 confirm을 사용한다. -->
 		<button onclick="confirm()">확인</button>
 	</fieldset>
 </body>
 <script type="text/javascript">
 
+	//색상이 바뀌기 전 값을 임시로 저장할 저장소들
+	//다른 행의 색상을 변경할때, 이전 변경된 행을 원상복구하기 위함.
 	var tempTd;
 	var tempText;
 
 	function confirm(){
-		var input = document.getElementById("choice").value;
+		//value는 input태크, textarea태그만 사용가능
+		//그 이외의 태그의 내용은 innerHTML로 사용 가능
+		var input = document.getElementById("choice").value;	//사용자가 입력한 값
 		var datas = document.getElementsByClassName("data");
 		var check = false;
 		

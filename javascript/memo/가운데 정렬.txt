@@ -1,0 +1,17 @@
+1. margin 사용
+	margin: 0 auto;
+	(3번까지 안되면) 좌우 여백(left, right)을 사용해서 직접 가운데 정렬
+
+2. text-align 사용 (form태그는 안됨)
+	외부요소 : text-align : center;
+	내부요소 : inline-block
+
+3. flexbox
+	외부요소 : display: flex, justify-content:center;;
+	
+
+
+
+
+
+

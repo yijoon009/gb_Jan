@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="task02.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<fieldset>
+		<legend>자동차 주행</legend>
+		<textarea id="result" rows="2" cols="40" readonly>현재 상태 표시</textarea>
+		<img id="img" src="출발전.png"><br>
+		<input id="pw" style="visibility:hidden" onkeyup="activeEnter()" value="비밀번호 입력">
+		<button id="on" onclick="SuperCar.showInput()">시동 켜기</button>
+		<button id="off" onclick="SuperCar.engineStop()">시동 끄기</button>
+		<button onclick="history.go(0)">초기화</button>
+	</fieldset>
+</body>
+<!-- jQuery를 먼저 추가한 후 외부 자바스크립트 파일에서 jQuery 문법을 사용해야한다. -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="task02.js"></script>
+</html>

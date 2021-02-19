@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery 심화 예제</title>
+</head>
+<body>
+	<ul class="food">
+		<li>삼겹살</li>
+		<li>초콜렛</li>
+		<li>돈가스</li>
+	</ul>
+	
+	<div class='toggle'>눌러보세요!</div>
+</body>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	
+	$(".toggle").click(function(){
+		if($(".food").css("display")=="none"){
+			$(".food").show();
+		}else{
+			$(".food").hide();
+		}
+	});
+
+
+/* 	$(".toggle").click(function(){
+					/* 매개변수 1개: 값 가져오기 */
+		if($(".food").css("display")=="none"){
+					/* 매개변수 2개: 값 수정하기 */
+			$(".food").css("display","block");
+		}else{
+			$(".food").css("display","none");
+		}
+	}); */
+
+
+	/* $(".food").children().click(function(){
+		$(this).remove();
+	}); */
+	
+	/* $(".food li").each(function(index, item){
+		console.log(index);
+		console.log(item);
+	}); */
+	
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>요소의 컨텐츠 가져오기</title>
+</head>
+<body>
+	
+	<textarea class="a" rows="2" cols="40">textarea</textarea>
+	<textarea class="a" rows="2" cols="40">textarea</textarea>
+	<textarea class="a" rows="2" cols="40">textarea</textarea>
+	<textarea class="a" rows="2" cols="40">textarea</textarea>
+	<div class='a'>div</div>
+	<p class='a'>p</p>
+	<strong class='a'>strong</strong>
+	<input class='a' value='input'>
+	<button class='a'>button</button>
+	<input type='radio' class='a' value='input_radio' checked>
+	<input type='radio' class='a' value='input_radio'>
+
+
+
+
+</body>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	console.log("==========jQury val()=========")
+	$.each($".a"),function(index, item){
+		console.log($(item).val());
+	});
+	console.log("==========jQury val()=========")
+</script>
+</html>

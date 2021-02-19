@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="task01.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>숫자를 한글로 변경하기</title>
+<style type="text/css">
+	.circle{
+		width:50px;
+	 	height: 50px;
+		border-radius: 50px;
+		background: yellow;
+		font-size: 16px;
+		text-align: center;
+		border-color: #ab47bc;
+	}
+</style>
+</head>
+<body>
+	<div class="circle">1</div>
+	<fieldset>
+		<legend>숫자를 한글로 변경</legend>
+		<textarea rows="3" cols="40" id="showAns">결과 표시 부분</textarea>
+		<input type="text" id="input">
+		<button onclick="changeNumToHangeul()">변경</button>
+	</fieldset>
+</body>
+<script type="text/javascript">
+	function changeNumToHangeul(){
+		var input = document.getElementById("input").value;
+		var msg = "";
+		var ans = document.getElementById("showAns");
+		var check=false;
+		
+		var num = ['0','1','2','3','4','5','6','7','8','9'];
+		var han = ["영",'일','이','삼','사','오','육','칠','팔','구'];
+		
+		for(let i=0;i<input.length;i++){
+			
+			msg += han[parseInt(input.charAt(i))];
+			console.log(msg);
+			for(let j=0;j<num.length;j++){
+				if(input[i] == num[j]){
+					msg += han[j];
+					check=true;
+				}
+				else if(input[i]=="."){
+					msg += "점";
+					check=true;
+					break;
+				}
+			}
+		}
+		if(check){
+			ans.innerHTML = msg;
+		}else{
+			ans.innerHTML="숫자만 입력해주세요.";
+		}
+	}
+</script>
+</html>
