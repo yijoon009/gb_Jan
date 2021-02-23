@@ -1,0 +1,21 @@
+위치 정보 서비스(Geolocation)
+	브라우저는 geolocation 객체를 통해 위치정보서비스를 제공한다.
+	이 객체는 window.navigator객체의 자식 객체이다.
+	window.navigator.geolocation
+	navigator.geolocation
+
+- 컴퓨터나 모바일 장치의 현재 위치를 알려주는 서비스
+	getCurrentPosition()
+	호출 즉시 현재 위치를 리턴하는 것이 아니라, 위치가 파악되면
+	호출될 positionCallback(position) 함수를 등록하여 사용한다.
+
+- 위치가 변경될 때마다 지속적으로 알려주는 반복 위치 서비스
+	watchPosition()
+
+-반복 위치 서비스 중단
+	clearWatch()
+
+
+
+
+
