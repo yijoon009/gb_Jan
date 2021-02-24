@@ -1,0 +1,6 @@
+dbeaver
+새로생성 > 우클릭 set active > connection > create connection > oracle > localhost > XE > 드라이브 설정 > hr/hr > 6버전 oracle 설정 > test > finish > 하단에 Scripts > ctrl ] > 이름변경
+
+※드라이버 경로 > C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
+※SQL안되면 위에 oracle XE > hr 로 되어있는지 확인
+  SELECT sysdate FROM dual;
