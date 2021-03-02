@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+										<!-- 
+											둘 중에 되는 걸로 하자!
+											버전별로 상이함.
+											DTD Mapper 3.0
+											DTD Config 3.0 
+											-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<select id="checkId" parameterType="string" resultType="_int">
+		select count(*) from table_member where id = #{id}
+	</select>
+	<select id="login" parameterType="hashmap" resultType="_int">
+		select count(*) from table_member where id = #{id} and password = #{pw}
+	</select>
+	
+	<!--
+		회원가입 팁
+		외부에서 모델객체를 받아온다. Type은 반드시 패키지부터 클래스까지 전부 작성해야 한다. (각 디렉토리는 .로 구분된다)
+		전달받은 모델 객체의 필드명을 #{}안에 작성해준다.
+		예) #{num}, #{address} 
+	 -->
+	 <insert id="join" parameterType="member">
+      INSERT INTO TABLE_MEMBER VALUES(MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{password}, #{gender}, #{zipcode},#{address}, #{addressDetail}, #{addressEtc})
+  	</insert>
+  	
+  	<select id="selectUser" parameterType="_int" resultType="member">
+  		select * from table_member where num = #{num}
+  	</select>
+  	
+  	<select id="selectNum" parameterType="string" resultType="_int">
+  		select num from table_member where id = #{id}
+  	</select>
+  	
+  	<select id="selectPw" parameterType="string" resultType="string">
+  		select password from table_member where id = #{id}
+  	</select>
+
+  	<select id="selectId" parameterType="_int" resultType="string">
+  		select id from table_member where num = #{num}
+  	</select>
+</mapper>

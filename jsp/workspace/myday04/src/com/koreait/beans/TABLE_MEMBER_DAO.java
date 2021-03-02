@@ -24,6 +24,8 @@ public class TABLE_MEMBER_DAO {
 	ResultSet rs;
 
 	public boolean login(String id, String pw) {
+		boolean check = false;
+		
 		try {
 			context = new InitialContext(null);
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
@@ -31,17 +33,35 @@ public class TABLE_MEMBER_DAO {
 			conn = dataSource.getConnection();
 			String sql = "select count(*) from table_member where id=? and password=?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, x);
-			
-			
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			rs=ps.executeQuery();
+			rs.next();
+			if(rs.getInt(1) == 1) {
+				check = true;
+			}
 			
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("login(String, String) 오류 " + e.getMessage());
+		} finally {
+			try {
+				//커넥션 풀에서 close()의 역할은 해제가 아니라 반납이다.
+				if(rs != null) {
+					rs.close();
+				}
+				if(ps != null) {
+					ps.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
+		return check;
 	}
 	
 	

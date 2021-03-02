@@ -10,21 +10,11 @@
 <body>
 <%
 	String cookie = request.getHeader("Cookie");
-	String id = null;
-	String msg="";
-	if(cookie != null){
-		Cookie[] cookies = request.getCookies();
-		for(Cookie c : cookies){
-			if(c.getName().equals("id")){
-				id = c.getValue();
-				break;
-			}
-		}
-	}
-	if(id == null){
-		msg = "쿠키가 삭제되었습니다.";
-	}
+	
+	if(cookie == null){%>
+		<p>쿠키가 삭제되었습니다.</p>
+	<%}
+	
 %>
-	<p><%=msg %></p>
 </body>
 </html>
