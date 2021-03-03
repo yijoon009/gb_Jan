@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>		
+																	<!--
+																		둘 중에 되는 걸로 하자!
+																		버전별로 상이함.
+																		DTD Mapper 3.0
+																		DTD Config 3.0  
+																	-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<select id="checkId" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="login" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} AND PASSWORD = #{pw}
+	</select>
+	
+	<!--
+		회원가입 팁
+		외부에서 모델객체를 받아온다. Type은 반드시 패키지부터 클래스까지 전부 작성해야 한다(각 디렉토리는 .로 구분한다)
+		전달받은 모델 객체의 필드명을 #{}안에 작성해준다.
+		예)#{num}, #{address}
+	-->
+	
+	<!-- 
+	CREATE TABLE TABLE_MEMBER(
+	NUM NUMBER PRIMARY KEY,
+	ID VARCHAR2(500),
+	NAME VARCHAR2(500),
+	PASSWORD VARCHAR2(500),
+	GENDER VARCHAR2(50),
+	ZIPCODE VARCHAR2(50),
+	ADDRESS VARCHAR2(500),
+	ADDRESSDETAIL VARCHAR2(500),
+	ADDRESSETC VARCHAR2(500)
+);
+	 -->
+	
+	<insert id="join" parameterType="member">
+		INSERT INTO TABLE_MEMBER 
+		VALUES(MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{password}, #{gender}, #{zipcode}, 
+		#{address}, #{addressDetail}, #{addressEtc})
+	</insert>
+	
+	<select id="getMember" parameterType="_int" resultType="member">
+		SELECT * FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select>
+	
+	<select id="getNum" parameterType="string" resultType="_int">
+		SELECT NUM FROM TABLE_MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="getPw" parameterType="string" resultType="string">
+		SELECT PASSWORD FROM TABLE_MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="getId" parameterType="_int" resultType="string">
+		SELECT ID FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select>
+	<!-- 태그의 파라미터 타입이 다르다면 id를 동일하게 사용해도 되는 버전이 있다. -->
+	<select id="getPw2" parameterType="_int" resultType="string">
+		SELECT PASSWORD FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select>
+	
+	<select id="getMemberList" resultType="member">
+		SELECT * FROM TABLE_MEMBER
+	</select>
+	
+	<update id="modify" parameterType="member">
+		UPDATE TABLE_MEMBER 
+		SET NAME = #{name} 
+		WHERE NUM = #{num}
+	</update>
+	
+	<delete id="remove" parameterType="_int">
+		DELETE FROM TABLE_MEMBER WHERE NUM = #{num}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
