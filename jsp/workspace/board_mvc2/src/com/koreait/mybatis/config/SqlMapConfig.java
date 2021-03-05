@@ -16,7 +16,7 @@ public class SqlMapConfig {
 		try {
 			//config.xml 경로 작성
 			String resource = "./com/koreait/mybatis/config/config.xml";
-			//해당 경로에 있는 config.xml을 객체로 얻어오기
+			//해당 경로에 있는 config.xml을 객체로 읽어오기
 			Reader reader = Resources.getResourceAsReader(resource);
 			//전달한 config.xml객체를 토대로 Factory 빌드
 			sqlsession_f = new SqlSessionFactoryBuilder().build(reader);
@@ -30,3 +30,21 @@ public class SqlMapConfig {
 		return sqlsession_f;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

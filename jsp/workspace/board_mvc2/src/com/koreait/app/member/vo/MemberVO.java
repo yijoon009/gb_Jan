@@ -1,28 +1,31 @@
 package com.koreait.app.member.vo;
 
-/*memberId varchar2(300),
-memberPw varchar2(300),
-memberName varchar2(300),
-memberAge NUMBER(3),
-memberGender varchar2(20),
-memberEmail varchar2(200),
-memberZipcode varchar2(20),
-memberAddress varchar2(300),
-memberAddressDetail varchar2(300),
-memberAddressEtc varchar2(100),*/
+/*CREATE TABLE TABLE_MEMBER(
+		memberId VARCHAR2(300),
+		memberPw VARCHAR2(300),
+		memberName VARCHAR2(300),
+		memberAge NUMBER(3),
+		memberGender VARCHAR2(20),
+		memberEmail VARCHAR2(200),
+		memberZipcode VARCHAR2(20),
+		memberAddress VARCHAR2(300),
+		memberAddressDetail VARCHAR2(300),
+		memberAddressEtc VARCHAR2(100),
+		CONSTRAINT MEMBER_PK PRIMARY KEY(memberId)
+	);*/
+
 
 public class MemberVO {
-	
-   private String memberId;
-   private String memberPw;
-   private String memberName;
-   private int memberAge;
-   private String memberGender;
-   private String memberEmail;
-   private String memberZipcode;
-   private String memberAddress;
-   private String memberAddressDetail;
-   private String memberAddressEtc;
+	private String memberId;
+	private String memberPw;
+	private String memberName;
+	private int memberAge;
+	private String memberGender;
+	private String memberEmail;
+	private String memberZipcode;
+	private String memberAddress;
+	private String memberAddressDetail;
+	private String memberAddressEtc;
 	
 	public MemberVO() {;}
 
@@ -105,7 +108,19 @@ public class MemberVO {
 	public void setMemberAddressEtc(String memberAddressEtc) {
 		this.memberAddressEtc = memberAddressEtc;
 	}
-	
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

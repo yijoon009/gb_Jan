@@ -15,7 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --><!-- The contents of this file will be loaded for each web application --><Context>
-
+	<JarScanner scanClassPath="false"/>
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
@@ -25,32 +25,4 @@
     <!--
     <Manager pathname="" />
     -->
-    
-    <Resource
-    name="jdbc/oracle"
-    auto="Container"
-    type="javax.sql.DataSource"
-    driverClassName="oracle.jdbc.OracleDriver"
-    url="jdbc:oracle:this:@192.168.0.101:1521:XE"
-    username="hr"
-    password="hr"
-    maxActive="20"
-    maxIdle="20"
-    maxWait="-1"
-    />
-    <!-- 
-    	name : dbcp name
-    	username : oracle user name
-    	password : oracle user password
-    	maxActive: 연결 최대 허용 개수
-    	maxIdle : 항상 연결 상태를 유지하는 개수
-    	
-    	*maxActive와 maxIdle는 같은 값으로 주는것이 일반적이다.
-    
-     -->
-    
-    
-    
-    
-    
 </Context>
