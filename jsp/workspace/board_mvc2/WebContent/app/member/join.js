@@ -8,11 +8,11 @@ function formSubmit(){
 	var form = document.joinForm;
 	
 	//아이디 검사
-	if(form.memberId.value == "" || !check){
+/*	if(form.memberId.value == "" || !check){
 		alert("아이디를 확인해주세요.");
 		form.memberId.focus();
 		return false;
-	}
+	}*/
 	
 	form.submit();
 }
@@ -28,8 +28,8 @@ function checkId(id){
 		$.ajax({
 			//외부 js에서는 contextPath를 가져올 수 없기 때문에 jsp에 선언한 contextPath를 사용한다.
 			url:contextPath + "/member/MemberCheckIdOk.me?id="+id,	//요청할 url
-			type:"get",	//method
-			dataType:"text",	//전달받을 데이터의 타입
+			type:"get", //method
+			dataType:"text", //전달받을 데이터의 타입
 			success:function(result){	//통신 성공 시 응답 값을 result로 받는다.
 				if(result.trim() == "ok"){
 					check = true;

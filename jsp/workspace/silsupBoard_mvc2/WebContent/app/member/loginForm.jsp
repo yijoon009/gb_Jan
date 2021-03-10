@@ -8,7 +8,7 @@
       <title>로그인 페이지</title>
    </head>
    <body>
-      <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLoginOkCheck.me" method="post">
+      <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLoginOk.me" method="post">
          <center>
             <table border="1" cellpadding="0" cellspacing="0" width="400px">
                <tr height="50px">
@@ -26,14 +26,22 @@
                </tr>
                <tr height="30px">
                   <td colspan="2" align=center>
-                     <a href="javascript:formSubmit()">로그인</a>&nbsp;&nbsp;
-                     <a href="./joinForm.jsp">회원가입</a>
+                     <a href="javascript:loginForm.submit()">로그인</a>&nbsp;&nbsp;
+                     <a href="${pageContext.request.contextPath}/member/MemberJoin.me">회원가입</a>
                   </td>
                </tr>
             </table>
          </center>
       </form>
    </body>
-<script>var contextPath = "${pageContext.request.contextPath}";</script>
-<script src="${pageContext.request.contextPath}/app/member/login.js"></script>
 </html>
+
+
+
+
+
+
+
+
+
+

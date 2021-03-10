@@ -35,7 +35,7 @@ public class MemberCheckIdOkAction implements Action{
 		}
 		out.close();
 		
-		//페이지 이동을 하지 않는다
+		//페이지 이동을 하지 않는다.
 		return null;
 	}
 

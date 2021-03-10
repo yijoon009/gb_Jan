@@ -1,5 +1,7 @@
 package com.koreait.app.member.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -52,6 +54,16 @@ public class MemberDAO {
 	 */
 	public boolean checkId(String memberId) {
 		return (Integer)session.selectOne("Member.checkId", memberId) == 1;
+	}
+	
+	//로그인
+	public boolean login(String id, String pw) {
+		HashMap<String, String> member = new HashMap<>();
+		
+		member.put("id", id);
+		member.put("pw", encrypt(pw));
+		
+		return (Integer)session.selectOne("Member.login", member) == 1;
 	}
 }
 

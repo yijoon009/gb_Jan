@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
@@ -18,20 +19,22 @@ public class MemberLoginOkAction implements Action{
 		ActionForward forward = null;
 		
 		MemberDAO dao = new MemberDAO();
+		HttpSession session = req.getSession();
+		
 		if(dao.login(req.getParameter("memberId"), req.getParameter("memberPw"))) {
 			//성공
 			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/board/BoardList.bo");
+			forward.setRedirect(true);
+			forward.setPath(req.getContextPath() + "/board/BoardList.bo");
+			session.setAttribute("session_id", req.getParameter("memberId"));
 		}else {
 			//실패
-			PrintWriter out = resp.getWriter();
-			resp.setCharacterEncoding("text/html;charset=utf-8");
-			out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.');</script>");
-			out.close();
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/member/MemberLogin.me?login=false");
 		}
 		
-		return null;
+		return forward;
 	}
 
 }

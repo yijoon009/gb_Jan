@@ -37,7 +37,7 @@ public class MemberDAO {
 	public boolean login(String memberId, String memberPw) {
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("memberId", memberId);
-		datas.put("memberPw", decrypt(memberPw));
+		datas.put("memberPw", encrypt(memberPw));
 		return (Integer) session.selectOne("Member.login", datas) == 1;
 	}
 	
